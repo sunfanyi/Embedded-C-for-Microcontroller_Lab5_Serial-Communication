@@ -90,7 +90,7 @@ void LCD_Init(void)
     // entry mode set
     LCD_sendbyte(0b00000110,0);  // 0x06 Auto Increment cursor, shift display off
 	//remember to turn the LCD display back on at the end of the initialisation (not in the data sheet)
-    LCD_sendbyte(0b00001100,0);  // display on, cursor off, blinking off
+    LCD_sendbyte(0b00001110,0);  // display on, cursor on, blinking off
 }
 
 /************************************
