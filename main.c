@@ -21,6 +21,7 @@ void main(void) {
     while(1){
         info = getCharSerial4();
         LCD_sendbyte(info,1);
+        sendCharSerial4(info);
     }
 }
 
