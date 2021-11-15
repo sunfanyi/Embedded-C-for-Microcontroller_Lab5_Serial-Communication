@@ -34,6 +34,7 @@ void sendCharSerial4(char charToSend) {
 //function to send a string over the serial interface
 void sendStringSerial4(char *string){
 	//Hint: look at how you did this for the LCD lab
+    while (*string) {sendCharSerial4(*string++);}
 }
 
 

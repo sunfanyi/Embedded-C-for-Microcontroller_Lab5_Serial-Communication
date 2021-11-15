@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>D:/Desktop/ME3/Embedded C for Microcontroller/Tutorials/Lab5_Serial-communication/lab-5-fanyi-ernie.X/serial.h</itemPath>
       <itemPath>D:/Desktop/ME3/Embedded C for Microcontroller/Tutorials/Lab5_Serial-communication/lab-5-fanyi-ernie.X/LCD.h</itemPath>
+      <itemPath>D:/Desktop/ME3/Embedded C for Microcontroller/Tutorials/Lab5_Serial-communication/lab-5-fanyi-ernie.X/ADC.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -17,6 +18,7 @@
       <itemPath>D:/Desktop/ME3/Embedded C for Microcontroller/Tutorials/Lab5_Serial-communication/lab-5-fanyi-ernie.X/serial.c</itemPath>
       <itemPath>D:/Desktop/ME3/Embedded C for Microcontroller/Tutorials/Lab5_Serial-communication/lab-5-fanyi-ernie.X/LCD.c</itemPath>
       <itemPath>D:/Desktop/ME3/Embedded C for Microcontroller/Tutorials/Lab5_Serial-communication/lab-5-fanyi-ernie.X/main.c</itemPath>
+      <itemPath>D:/Desktop/ME3/Embedded C for Microcontroller/Tutorials/Lab5_Serial-communication/lab-5-fanyi-ernie.X/ADC.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
