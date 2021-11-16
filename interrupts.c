@@ -8,7 +8,8 @@
 void Interrupts_init(void)
 {
 	// turn on global interrupts, peripheral interrupts and the interrupt source 
-    PIE4bits.RC4IE=1;	//receive interrupt
+    PIE4bits.RC4IE = 1;	//receive interrupt
+    PIE4bits.TX4IE = 0;
     INTCONbits.GIEL = 1;  // turn on peripheral interrupts
     INTCONbits.GIE = 1;  // turn on global interrupts 
 }
@@ -24,9 +25,9 @@ void __interrupt(high_priority) HighISR()
         LATHbits.LATH3 = !LATHbits.LATH3;
         putCharToRxBuf(RC4REG);
     }
-    // transmitter interrupt
-    if (PIR4bits.TX4IF) {
+    // transmitter interrup
+    if (PIR4bits.TX4IF && (PIE4bits.TX4IE == 1)){ //write buffer activated, TX4REG is empty
         TX4REG = getCharFromTxBuf();
-        PIR4bits.TX4IF = 0;
+        if (!isDataInTxBuf()) {PIE4bits.TX4IE = 0;}
     }
 }

@@ -24,36 +24,15 @@ void main(void) {
     
     TRISHbits.TRISH3 = 0;
     LATHbits.LATH3 = 0;
-    TRISDbits.TRISD7 = 0;
-    LATDbits.LATD7 = 0;
-//    putCharToTxBuf(0);
-//    putCharToRxBuf(0);
     
 //    LATDbits.LATD7 = !LATDbits.LATD7;
     while(1){
-//        unsigned char i = 0;
-//        for (i=0;i<60;i++) {putCharToTxBuf(0b000);}
         if (isDataInRxBuf()) {
             info = getCharFromRxBuf();
             LCD_sendbyte(info,1);
             putCharToTxBuf(info);
             sendTxBuf();
         }
-        
-//        LCD_sendbyte(info,1);
-//        if (!isDataInRxBuf()) {LCD_sendbyte(info,1);}
-//        info = getCharSerial4();
-//        LCD_sendbyte(info,1);
-//        ADC_val = ADC_getval();
-//        ADC2String(buf, ADC_val);
-//        
-//        LCD_sendbyte(0b00000001,0); // display clear
-//        __delay_ms(2);
-//        LCD_sendstring(buf);
-//        
-//        sendStringSerial4(buf);
-//        sendStringSerial4("   ");
-//        __delay_ms(1000);
     }
 }
 
