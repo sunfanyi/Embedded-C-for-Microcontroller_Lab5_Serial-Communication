@@ -10,6 +10,7 @@
 #include "LCD.h"
 #include "serial.h"
 #include "ADC.h"
+#include "interrupts.h"
 
 #define _XTAL_FREQ 64000000 //note intrinsic _delay function is 62.5ns at 64,000,000Hz  
 
@@ -17,21 +18,36 @@ void main(void) {
     LCD_Init();
     initUSART4();
     ADC_init();
+    Interrupts_init();
     
-    unsigned int ADC_val;
-    char buf[0];
+    char info;
     
+    TRISHbits.TRISH3 = 0;
+    LATHbits.LATH3 = 0;
+    TRISDbits.TRISD7 = 0;
+    LATDbits.LATD7 = 0;
+    
+//    PIE4bits.RC4IE=1;
+//    PIE4bits.TX4IE=1;
     while(1){
-        ADC_val = ADC_getval();
-        ADC2String(buf, ADC_val);
-        
-        LCD_sendbyte(0b00000001,0); // display clear
-        __delay_ms(2);
-        LCD_sendstring(buf);
-        
-        sendStringSerial4(buf);
-        sendStringSerial4("   ");
-        __delay_ms(1000);
+        if (isDataInRxBuf()) {
+            info = getCharFromRxBuf();
+            LCD_sendbyte(info,1);
+        }
+//        LCD_sendbyte(info,1);
+//        if (!isDataInRxBuf()) {LCD_sendbyte(info,1);}
+//        info = getCharSerial4();
+//        LCD_sendbyte(info,1);
+//        ADC_val = ADC_getval();
+//        ADC2String(buf, ADC_val);
+//        
+//        LCD_sendbyte(0b00000001,0); // display clear
+//        __delay_ms(2);
+//        LCD_sendstring(buf);
+//        
+//        sendStringSerial4(buf);
+//        sendStringSerial4("   ");
+//        __delay_ms(1000);
     }
 }
 
