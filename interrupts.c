@@ -25,8 +25,8 @@ void __interrupt(high_priority) HighISR()
         putCharToRxBuf(RC4REG);
     }
     // transmitter interrupt
-//    if (PIR4bits.TX4IF) {
-//        LATHbits.LATH3 = !LATHbits.LATH3;
-//        PIR4bits.TX4IF = 0;  // clear the flag
-//    }
+    if (PIR4bits.TX4IF) {
+        TX4REG = getCharFromTxBuf();
+        PIR4bits.TX4IF = 0;
+    }
 }

@@ -26,14 +26,20 @@ void main(void) {
     LATHbits.LATH3 = 0;
     TRISDbits.TRISD7 = 0;
     LATDbits.LATD7 = 0;
+//    putCharToTxBuf(0);
+//    putCharToRxBuf(0);
     
-//    PIE4bits.RC4IE=1;
-//    PIE4bits.TX4IE=1;
+//    LATDbits.LATD7 = !LATDbits.LATD7;
     while(1){
+//        unsigned char i = 0;
+//        for (i=0;i<60;i++) {putCharToTxBuf(0b000);}
         if (isDataInRxBuf()) {
             info = getCharFromRxBuf();
             LCD_sendbyte(info,1);
+            putCharToTxBuf(info);
+            sendTxBuf();
         }
+        
 //        LCD_sendbyte(info,1);
 //        if (!isDataInRxBuf()) {LCD_sendbyte(info,1);}
 //        info = getCharSerial4();
