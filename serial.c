@@ -30,12 +30,13 @@ void sendCharSerial4(char charToSend) {
     TX4REG = charToSend; //transfer char to transmitter
 }
 
-
 //function to send a string over the serial interface
 void sendStringSerial4(char *string){
 	//Hint: look at how you did this for the LCD lab
     while (*string) {sendCharSerial4(*string++);}
 }
+
+
 
 
 //functions below are for Ex3 and 4 (optional)
@@ -59,6 +60,11 @@ void putCharToRxBuf(char byte){
 char isDataInRxBuf (void){
     return (RxBufWriteCnt!=RxBufReadCnt);
 }
+
+
+
+
+
 
 // circular buffer functions for TX
 // retrieve a byte from the buffer
